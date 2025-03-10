@@ -45,10 +45,14 @@
     button:hover {
       background-color: #0056b3;
     }
+    .subject-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
     .subject-card {
-      display: inline-block;
       width: 30%;
-      margin: 10px;
       padding: 20px;
       background-color: #e6f2ff;
       border-radius: 12px;
@@ -59,32 +63,39 @@
     .subject-card:hover {
       background-color: #cce5ff;
     }
-    .features-content {
+    .features-grid {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
     }
-    .cheat-sheet, .chapter-image {
-      width: 45%;
+    .feature-box {
+      width: 30%;
       text-align: center;
-    }
-    .cheat-sheet img, .chapter-image img {
-      width: 80%;
-      height: auto;
+      background-color: #f8f9fa;
+      padding: 15px;
       border-radius: 12px;
-      cursor: pointer;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .feature-box img {
+      width: 60%;
+      height: auto;
+      border-radius: 8px;
+      cursor: pointer;
       transition: transform 0.3s ease;
     }
-    .cheat-sheet img:hover, .chapter-image img:hover {
+    .feature-box img:hover {
       transform: scale(1.05);
     }
-    .cheat-sheet h3, .chapter-image h3 {
-      margin-bottom: 10px;
-    }
-    .small-image {
-      height: 50%;
-      object-fit: cover;
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        width: 90%;
+      }
+      .subject-card, .feature-box {
+        width: 80%;
+      }
     }
   </style>
 </head>
@@ -103,31 +114,47 @@
 
   <div class="container hidden" id="subject-container">
     <h2>Select a Subject</h2>
-    <div class="subject-card" onclick="selectSubject('Math')">
-      <h3>Math</h3>
-    </div>
-    <div class="subject-card" onclick="selectSubject('Economics')">
-      <h3>Economics</h3>
+    <div class="subject-grid">
+      <div class="subject-card" onclick="selectSubject('Math')">
+        <h3>Math</h3>
+      </div>
+      <div class="subject-card" onclick="selectSubject('Economics')">
+        <h3>Economics</h3>
+      </div>
     </div>
   </div>
 
   <div class="container hidden" id="features-container">
-    <div class="features-content" id="economics-content">
-      <div class="cheat-sheet" id="cheat-sheet-container">
+    <h2>Selected Subject</h2>
+    <div class="features-grid" id="economics-content">
+      <div class="feature-box">
         <h3>Cheat Sheet</h3>
         <a href="images/readable_economics_cheat_sheet.png" target="_blank">
-          <img src="images/readable_economics_cheat_sheet.png" class="small-image" alt="Cheat Sheet">
+          <img src="images/readable_economics_cheat_sheet.png" alt="Cheat Sheet">
         </a>
       </div>
-      <div class="chapter-image" id="chapter-image-container">
+      <div class="feature-box">
         <h3>Economics Note</h3>
         <a href="https://heyzine.com/flip-book/68ee3cab75.html" target="_blank">
           <img src="images/ECONOMIS_page-0001.jpg" alt="Economics Chapter 2">
         </a>
       </div>
+      <div class="feature-box">
+        <h3>Quiz</h3>
+        <a href="https://quizizz.com/join/quiz/67cabc82cf13ed312bd2e8d1/start?studentShare=true" target="_blank">
+          <img src="images/quiz_icon.png" alt="Quiz Link">
+        </a>
+      </div>
+      <div class="feature-box">
+        <h3>Audio Note</h3>
+        <audio controls>
+          <source src="/mnt/data/ElevenLabs_2025-03-10T16_16_51_Jake.mp3" type="audio/mpeg">
+          <source src="/mnt/data/ElevenLabs_2025-03-10T16_16_51_Jake.ogg" type="audio/ogg">
+        </audio>
+      </div>
     </div>
-    <div class="features-content hidden" id="math-content">
-      <div class="chapter-image">
+    <div class="features-grid hidden" id="math-content">
+      <div class="feature-box">
         <h3>Math Notes</h3>
         <a href="https://anyflip.com/qhupu/zqqv/" target="_blank">
           <img src="images/Maths.jpg" alt="Math Notes">
@@ -146,7 +173,7 @@
     function selectSubject(subject) {
       document.getElementById('subject-container').classList.add('hidden');
       document.getElementById('features-container').classList.remove('hidden');
-
+      
       const economicsContent = document.getElementById('economics-content');
       const mathContent = document.getElementById('math-content');
       if (subject === 'Economics') {
