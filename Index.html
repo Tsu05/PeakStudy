@@ -87,14 +87,12 @@
     .feature-box img:hover {
       transform: scale(1.05);
     }
-    
-    /* Responsive Design */
     @media (max-width: 768px) {
       .container {
         width: 90%;
       }
       .subject-card, .feature-box {
-        width: 80%;
+        width: 100%;
       }
     }
   </style>
@@ -148,8 +146,10 @@
       <div class="feature-box">
         <h3>Audio Note</h3>
         <audio controls>
-          <source src="/mnt/data/ElevenLabs_2025-03-10T16_16_51_Jake.mp3" type="audio/mpeg">
-          <source src="/mnt/data/ElevenLabs_2025-03-10T16_16_51_Jake.ogg" type="audio/ogg">
+          <source src="audio/ElevenLabs_2025-03-10T16_16_51_Jake – Social Media and Podcast Voice – Informative, Energetic, Youthful_pvc_s30_sb80_se80_b_m2.mp3" type="audio/mpeg">
+          <source src="audio/ElevenLabs_2025-03-10T16_16_51_Jake – Social Media and Podcast Voice – Informative, Energetic, Youthful_pvc_s30_sb80_se80_b_m2.mp3" type="audio/ogg">
+          <source src="audio/ElevenLabs_2025-03-10T16_16_51_Jake – Social Media and Podcast Voice – Informative, Energetic, Youthful_pvc_s30_sb80_se80_b_m2.mp3" type="audio/wav">
+          <a href="audio/ElevenLabs_2025-03-10T16_16_51_Jake – Social Media and Podcast Voice – Informative, Energetic, Youthful_pvc_s30_sb80_se80_b_m2.mp3" download>Download here</a>
         </audio>
       </div>
     </div>
@@ -173,16 +173,8 @@
     function selectSubject(subject) {
       document.getElementById('subject-container').classList.add('hidden');
       document.getElementById('features-container').classList.remove('hidden');
-      
-      const economicsContent = document.getElementById('economics-content');
-      const mathContent = document.getElementById('math-content');
-      if (subject === 'Economics') {
-        economicsContent.style.display = 'flex';
-        mathContent.style.display = 'none';
-      } else if (subject === 'Math') {
-        mathContent.style.display = 'flex';
-        economicsContent.style.display = 'none';
-      }
+      document.getElementById('economics-content').style.display = subject === 'Economics' ? 'flex' : 'none';
+      document.getElementById('math-content').style.display = subject === 'Math' ? 'flex' : 'none';
     }
 
     function showSubjects() {
