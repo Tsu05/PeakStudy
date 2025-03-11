@@ -13,13 +13,25 @@
     }
     header {
       background-color: #007bff;
-      color: white;
-      padding: 20px;
-      text-align: center;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.header-text {
+  text-align: left;
     }
     .container {
       width: 80%;
-      margin: 20px auto;
+      margin: 10px auto;
       padding: 20px;
       background-color: white;
       border-radius: 12px;
@@ -99,8 +111,15 @@
 </head>
 <body>
   <header>
-    <h1>AI Simplified Notes Service</h1>
-    <p>Choose your subject for simplified learning</p>
+    <header>
+      <div class="header-content">
+        <div class="header-text">
+          <h1>AI Simplified Notes Service</h1>
+          <p>Choose your subject for simplified learning</p>
+        </div>
+        <img src="images/Untitled_design-removebg-preview.png" alt="Logo" height="120px">
+      </div>
+    </header>
   </header>
 
   <div class="container" id="auth-container">
@@ -140,7 +159,7 @@
       <div class="feature-box">
         <h3>Quiz</h3>
         <a href="https://quizizz.com/join/quiz/67cabc82cf13ed312bd2e8d1/start?studentShare=true" target="_blank">
-          <img src="images/quiz_6450848.png" alt="Economics Quiz">
+          <img src="images/quiz_icon.png" alt="Quiz Link">
         </a>
       </div>
       <div class="feature-box">
